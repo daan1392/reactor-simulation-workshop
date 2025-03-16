@@ -1,0 +1,16 @@
+name: reactor-sim
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - jupyterlab
+  - matplotlib
+  - numpy
+  - scipy
+  - pandas
+  - openmc
+  - pip:
+    - openmc_data_downloader
+    - openmc_depletion_plotter
+    - openmc_data
