@@ -30,15 +30,19 @@ To make this workshop accessible to everyone, we've simplified the setup process
     [Mac OS](https://store.docker.com/editions/community/docker-ce-desktop-mac), or  
     [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows).  
 
-    >[!IMPORTANT]  
-    >If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) by running the following command in PowerShell:  
-    >```wsl --install```
+    > [!IMPORTANT]  
+    > If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).  
+    > Run the following command in PowerShell to install WSL:  
+    > ```powershell  
+    > wsl --install  
+    > ```  
+    > This step is necessary for proper Docker functionality on Windows.
 
-    >[!TIP]  
-    >**Verify Docker Installation**  
-    >To confirm Docker is installed correctly, open a terminal and run:  
-    >```docker --version```  
-    >This should display the installed Docker version. If you encounter issues, refer to the [Docker troubleshooting guide](https://docs.docker.com/get-docker/#troubleshoot-installation).
+    > [!TIP]  
+    > **Verify Docker Installation**  
+    > To confirm Docker is installed correctly, open a terminal and run:  
+    > ```docker --version```  
+    > This should display the installed Docker version. If you encounter issues, refer to the [Docker troubleshooting guide](https://docs.docker.com/get-docker/#troubleshoot-installation).
 
 2. **Clone the Repository**  
     Clone the reactor-simulation-workshop repository using [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download it directly. Ensure Docker is running, then build the Docker image:  
@@ -47,8 +51,8 @@ To make this workshop accessible to everyone, we've simplified the setup process
     cd reactor-simulation-workshop
     docker build -t reactor-workshop .
     ```
-    >[!NOTE]  
-    >Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
+    > [!NOTE]  
+    > Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
 
     <details>
     <summary><b>Don't have Git installed?</b></summary>
