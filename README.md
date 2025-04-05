@@ -30,7 +30,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
     [Mac OS](https://store.docker.com/editions/community/docker-ce-desktop-mac), or  
     [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows).  
 
-    > **Important**  
+    > [!IMPORTANT]
     > If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).  
     > Run the following command in PowerShell to install WSL:  
     > ```powershell  
@@ -38,7 +38,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
     > ```  
     > This step is necessary for proper Docker functionality on Windows.
 
-    > **Tip**  
+    > [!TIP]
     > **Verify Docker Installation**  
     > To confirm Docker is installed correctly, open a terminal and run:  
     > ```bash
@@ -53,7 +53,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
     cd reactor-simulation-workshop
     docker build -t reactor-workshop .
     ```
-    > **Note**  
+    > [!NOTE]
     > Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
 
     <details>
