@@ -64,8 +64,8 @@ RUN cd ${HOME}/data && \
 ENV OPENMC_CROSS_SECTIONS=${HOME}/data/nndc-b8.0-hdf5/endfb-viii.0-hdf5/cross_sections.xml
 
 # Copy workshop files
-COPY datalabs/ ${HOME}/datalabs/
-COPY extra/ ${HOME}/extra/
+COPY Datalabs/ ${HOME}/Datalabs/
+COPY Extra/ ${HOME}/Extra/
 COPY data/ ${HOME}/data/ 
 
 WORKDIR ${HOME}
