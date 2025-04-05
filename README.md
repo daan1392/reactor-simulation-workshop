@@ -53,13 +53,12 @@ To make this workshop accessible to everyone, we've simplified the setup process
     cd reactor-simulation-workshop
     docker build -t reactor-workshop .
     ```
-> [!NOTE]
-> Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
-
     <details>
     <summary><b>Don't have Git installed?</b></summary>
     You can download the repository as a ZIP file and unzip it instead.
     </details>
+> [!NOTE]
+> Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
 
 3. **Run the Docker Container**  
     Enable graphics linking between your OS and Docker, then run the container:  
