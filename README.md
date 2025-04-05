@@ -18,11 +18,16 @@ The workshop also includes supplementary materials on advanced topics such as:
 
 To make this workshop accessible to everyone, we've simplified the setup process by providing a pre-configured Docker environment. This container includes:
 - A complete OpenMC installation.
-- Pre-installed nuclear data libraries.
+- Pre-installed nuclear data library (ENDF/B-VIII.0).
 - All required Python packages.
 - An organized folder structure for the workshop materials.
 
-## Local Installation
+## Installation instructions
+
+- Windows installation video 
+
+    [![Windows installation video](https://img.youtube.com/vi/jZ_UHi6TRn0/0.jpg)](https://www.youtube.com/watch?v=jZ_UHi6TRn0)
+
 
 1. **Install Docker**  
     Install Docker for your operating system:  
