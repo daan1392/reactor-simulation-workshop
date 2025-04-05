@@ -30,13 +30,13 @@ To make this workshop accessible to everyone, we've simplified the setup process
     [Mac OS](https://store.docker.com/editions/community/docker-ce-desktop-mac), or  
     [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows).  
 
-    > [!IMPORTANT]
-    > If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).  
-    > Run the following command in PowerShell to install WSL:  
-    > ```powershell  
-    > wsl --install  
-    > ```  
-    > This step is necessary for proper Docker functionality on Windows.
+> [!IMPORTANT]
+> If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).  
+> Run the following command in PowerShell to install WSL:  
+> ```powershell  
+> wsl --install  
+> ```  
+> This step is necessary for proper Docker functionality on Windows.
 
     > [!TIP]
     > **Verify Docker Installation**  
