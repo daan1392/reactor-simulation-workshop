@@ -1,80 +1,78 @@
 # Reactor Simulation Workshop
 
-Welcome to the Reactor Simulation Workshop! This hands-on tutorial introduces you to reactor physics simulations using Python and OpenMC. The workshop selects materials from two excellent resources: the [neutronics workshop](https://github.com/fusion-energy/neutronics-workshop.git) and the [Reactor Physics with Python](https://github.com/ezsolti/RFP.git) course from Uppsala University.
+Welcome to the Reactor Simulation Workshop! This hands-on tutorial introduces you to reactor physics simulations using Python and OpenMC. The workshop draws materials from two excellent resources: [Neutronics Workshop](https://github.com/fusion-energy/neutronics-workshop.git) and [Reactor Physics with Python](https://github.com/ezsolti/RFP.git).
 
 ## Overview
 
 This workshop is designed to:
-- Provide a practical introduction to Python programming
-- Teach fundamental reactor physics concepts
-- Demonstrate how to calculate key reactor parameters and reactivity effects
-- Give hands-on experience with open-source nuclear engineering tools
+- Provide a practical introduction to Python programming.
+- Teach fundamental reactor physics concepts.
+- Offer hands-on experience with open-source nuclear engineering tools.
 
-The workshop includes supplementary materials covering advanced topics such as:
-- Building your own Monte Carlo particle transport simulator
-- Understanding nuclear data formats and usage
-- Additional reactor physics tutorials and examples
+The workshop also includes supplementary materials on advanced topics such as:
+- Building a Monte Carlo particle transport simulator.
+- Understanding nuclear data formats and their usage.
+- Additional reactor physics tutorials and examples.
 
 ## Getting Started
 
-To make this workshop accessible for everyone, we've simplified the setup process by providing a pre-configured Docker environment. This container includes:
-- A complete OpenMC installation
-- Pre-installed nuclear data libraries
-- All required Python packages
-- An organized folder structure for the workshop materials
+To make this workshop accessible to everyone, we've simplified the setup process by providing a pre-configured Docker environment. This container includes:
+- A complete OpenMC installation.
+- Pre-installed nuclear data libraries.
+- All required Python packages.
+- An organized folder structure for the workshop materials.
 
-# Local Installation
+## Local Installation
 
-1. Install Docker for
-[Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/),
-[Mac OS](https://store.docker.com/editions/community/docker-ce-desktop-mac), or
-[Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). 
+1. **Install Docker**  
+    Install Docker for your operating system:  
+    [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/),  
+    [Mac OS](https://store.docker.com/editions/community/docker-ce-desktop-mac), or  
+    [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows).  
 
-> [!IMPORTANT]
-> Make sure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) if on Windows with
-> ```wsl --install``` in PowerShell
+    > [!IMPORTANT]  
+    > If you're using Windows, ensure you also install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) by running the following command in PowerShell:  
+    > ```wsl --install```
 
-> [!TIP]
-> Verify the Docker installation
->To ensure Docker is installed correctly, open a terminal and run the following command:
->
->```docker --version```
->
->This should display the installed Docker version. If you encounter any issues, refer to the [Docker troubleshooting guide](https://docs.docker.com/get-docker/#troubleshoot-installation).
+    > [!TIP]  
+    > **Verify Docker Installation**  
+    > To confirm Docker is installed correctly, open a terminal and run:  
+    > ```docker --version```  
+    > This should display the installed Docker version. If you encounter issues, refer to the [Docker troubleshooting guide](https://docs.docker.com/get-docker/#troubleshoot-installation).
 
-
-2. Clone the reactor-simulation-workshop using [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or downloading the repository directly, make sure docker is running and build the docker image.
-
-    ```git clone https://github.com/daan1392/reactor-simulation-workshop.git```
-
+2. **Clone the Repository**  
+    Clone the reactor-simulation-workshop repository using [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download it directly. Ensure Docker is running, then build the Docker image:  
+    ```bash
+    git clone https://github.com/daan1392/reactor-simulation-workshop.git
+    cd reactor-simulation-workshop
+    docker build -t reactor-workshop .
+    ```
+    > [!NOTE]  
+    > Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
+    
     <details>
-    If you do not have git installed, or don't want to install it, you can also download the repository as a zip file and unzip it.
+    <summary><b>Don't have Git installed?</b></summary>
+    You can download the repository as a ZIP file and unzip it instead.
     </details>
 
-    ```cd reactor-simulation-workshop```
-
-    ```docker build -t reactor-workshop .```
-
-
-3. Now that you have the docker image you can enable graphics linking between
-your os and docker, and then run the docker container by typing the following
-commands in a terminal window.
-
-    ```docker run -p 8888:8888 reactor-workshop```
+3. **Run the Docker Container**  
+    Enable graphics linking between your OS and Docker, then run the container:  
+    ```bash
+    docker run -p 8888:8888 reactor-workshop
+    ```
 
     <details>
-      <summary><b>Expand</b> - Having permission denied errors?</summary>
-        <pre><code class="language-html">
-        If you are running the command from Linux or Ubuntu terminal and getting permission denied messages back.
-        Try running the same command with elevated user permissions by adding sudo at the front.
-        sudo docker run -p 8888:8888 ghcr.io/fusion-energy/neutronics-workshop
-        Then enter your password when prompted.
-        </code></pre>
+    <summary><b>Permission Denied Errors?</b></summary>
+    If you're using a Linux or Ubuntu terminal and encounter permission denied errors, try running the command with elevated permissions:  
+    ```bash
+    sudo docker run -p 8888:8888 reactor-workshop
+    ```  
+    Enter your password when prompted.
     </details>
 
-4. A URL should be displayed in the terminal and can now be opened in the
-internet browser of your choice. Select and open the URL at the end of the terminal printout (highlighted below)
+4. **Access the Jupyter Notebook Environment**  
+    Once the container is running, a URL will be displayed in the terminal. Open this URL in your web browser to access the Jupyter Notebook environment.  
 
     ![Open the environment](docker-run.png)
 
-If all went well you are now in a Jupyter Notebook environment. You will see the folders /data, /Datalabs and /extra. In Datalabs, the material used in the seminar is given and includes an introduction to Python, Sapling, Nuclear cross sections, Depletion, OpenMC basics and depletion. 
+    Inside the environment, you'll find folders such as `/data`, `/Datalabs`, and `/extra`. The `Datalabs` folder contains materials for the seminar, including an introduction to Python, Sapling, nuclear cross sections, depletion, OpenMC basics, and more.
