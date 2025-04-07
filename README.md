@@ -51,7 +51,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
 > This should display the installed Docker version. If you encounter issues, refer to the [Docker troubleshooting guide](https://docs.docker.com/get-docker/#troubleshoot-installation).
 
 2. **Clone the Repository**  
-    Clone the reactor-simulation-workshop repository using [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download it directly. Ensure Docker is running, then build the Docker image:  
+    Clone the reactor-simulation-workshop repository using [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download it directly. Ensure Docker is running, then build the Docker image (make sure you include the "." when building the docker image):  
     ```bash
     git clone https://github.com/daan1392/reactor-simulation-workshop.git
     cd reactor-simulation-workshop
@@ -59,7 +59,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
     ```
     <details>
     <summary><b>Don't have Git installed?</b></summary>
-    You can download the repository as a ZIP file and unzip it instead.
+    You can download the repository as a ZIP file and unzip it instead, however you will then have to navigate to this folder in command line using cd (change directory) and then executing "docker build -t reactor-workshop ." in this folder.
     </details>
 > [!NOTE]
 > Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
@@ -69,14 +69,9 @@ To make this workshop accessible to everyone, we've simplified the setup process
     ```bash
     docker run -p 8888:8888 reactor-workshop
     ```
-
     <details>
-    <summary><b>Permission Denied Errors?</b></summary>
-    If you're using a Linux or Ubuntu terminal and encounter permission denied errors, try running the command with elevated permissions:  
-    ```bash
-    sudo docker run -p 8888:8888 reactor-workshop
-    ```  
-    Enter your password when prompted.
+    <summary><b>Already build the docker environment and just want to run the Docker container?</b></summary>
+    Make sure the Docker software is up and running and then execute the command "docker run -p 8888:8888 reactor-workshop".
     </details>
 
 4. **Access the Jupyter Notebook Environment**  
