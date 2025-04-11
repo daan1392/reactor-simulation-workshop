@@ -56,6 +56,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
     git clone https://github.com/daan1392/reactor-simulation-workshop.git
     cd reactor-simulation-workshop
     docker build -t reactor-workshop .
+    docker volume create reactor-workshop-data
     ```
     <details>
     <summary><b>Don't have Git installed?</b></summary>
@@ -65,9 +66,9 @@ To make this workshop accessible to everyone, we've simplified the setup process
 > Building the environment may take considerable time because the full ENDF/B-VIII.0 nuclear data library is downloaded at six different temperatures. This library is approximately 17 GB in size, so ensure your machine has sufficient storage space available before proceeding.
 
 3. **Run the Docker Container**  
-    Enable graphics linking between your OS and Docker, then run the container:  
+    Enable graphics linking between your OS and Docker, make sure that the notebooks are saved to your computer when closing the Docker container and then run the container:  
     ```bash
-    docker run -p 8888:8888 reactor-workshop
+    docker run -p 8888:8888 -v reactor-workshop-data:/home/ulb reactor-workshop
     ```
     <details>
     <summary><b>Already build the docker environment and just want to run the Docker container?</b></summary>
