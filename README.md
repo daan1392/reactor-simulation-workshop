@@ -70,10 +70,6 @@ To make this workshop accessible to everyone, we've simplified the setup process
     ```bash
     docker run -p 8888:8888 -v reactor-workshop-data:/home/ulb reactor-workshop
     ```
-    <details>
-    <summary><b>Already build the docker environment and just want to run the Docker container?</b></summary>
-    Make sure the Docker software is up and running and then execute the command "docker run -p 8888:8888 reactor-workshop".
-    </details>
 
 4. **Access the Jupyter Notebook Environment**  
     Once the container is running, a URL will be displayed in the terminal. Open this URL in your web browser to access the Jupyter Notebook environment.  
