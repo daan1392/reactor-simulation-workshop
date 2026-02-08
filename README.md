@@ -26,7 +26,7 @@ To make this workshop accessible to everyone, we've simplified the setup process
 
 - Windows installation video 
 
-    [![Windows installation video](images/thumbnail.png)](https://www.youtube.com/watch?v=jZ_UHi6TRn0)
+    [![Windows installation video](figures/thumbnail.png)](https://www.youtube.com/watch?v=jZ_UHi6TRn0)
 
 1. **Install Docker**  
     Install Docker for your operating system:  
