@@ -74,6 +74,6 @@ To make this workshop accessible to everyone, we've simplified the setup process
 4. **Access the Jupyter Notebook Environment**  
     Once the container is running, a URL will be displayed in the terminal. Open this URL in your web browser to access the Jupyter Notebook environment.  
 
-    ![Open the environment](images/docker-run.png)
+    ![Open the environment](figures/docker-run.png)
 
     Inside the environment, you'll find folders such as `/data`, `/Datalabs`, and `/extra`. The `Datalabs` folder contains materials for the seminar, including an introduction to Python, Sapling, nuclear cross sections, depletion, OpenMC basics, and more.
