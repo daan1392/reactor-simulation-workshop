@@ -38,7 +38,7 @@ RUN pip install --upgrade pip && \
 RUN git clone --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git && \
     cd openmc && \
     git fetch --tags && \
-    git checkout v0.15.1 && \
+    git checkout v0.15.3 && \
     mkdir build && \
     cd build && \
     cmake .. && \
