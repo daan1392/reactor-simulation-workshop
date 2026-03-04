@@ -56,12 +56,12 @@ RUN mkdir -p ${HOME}/data
 
 # Download nuclear data
 # ENDFB-8.0
-RUN cd ${HOME}/data && \
-    wget -O nndc-b8.0.tar.xz https://anl.box.com/shared/static/uhbxlrx7hvxqw27psymfbhi7bx7s6u6a.xz && \
-    mkdir nndc-b8.0-hdf5 && \
-    tar -xf nndc-b8.0.tar.xz -C nndc-b8.0-hdf5
+# RUN cd ${HOME}/data && \
+#     wget -O nndc-b8.0.tar.xz https://anl.box.com/shared/static/uhbxlrx7hvxqw27psymfbhi7bx7s6u6a.xz && \
+#     mkdir nndc-b8.0-hdf5 && \
+#     tar -xf nndc-b8.0.tar.xz -C nndc-b8.0-hdf5
 
-ENV OPENMC_CROSS_SECTIONS=${HOME}/data/nndc-b8.0-hdf5/endfb-viii.0-hdf5/cross_sections.xml
+# ENV OPENMC_CROSS_SECTIONS=${HOME}/data/nndc-b8.0-hdf5/endfb-viii.0-hdf5/cross_sections.xml
 
 # Copy workshop files
 COPY Datalabs/ ${HOME}/Datalabs/
