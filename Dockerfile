@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/base:bookworm
 
-# Install minimal system dependencies
-RUN apt-get --allow-releaseinfo-change update && \
-    apt-get --yes install \
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     python3-pip \
     python3-venv \
     git \
@@ -11,65 +11,66 @@ RUN apt-get --allow-releaseinfo-change update && \
     g++ \
     libhdf5-dev \
     mpich \
-    wget 
+    wget \
+    ca-certificates && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set up Python environment
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
+# Set up environment variables
+ARG NB_USER=vscode
+ARG NB_UID=1000
+ENV USER=${NB_USER} \
+    HOME=/home/vscode \
+    VIRTUAL_ENV=/opt/venv
+    
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-ARG NB_USER=ulb
-ARG NB_UID=1000
-ENV USER=${NB_USER}
-ENV NB_UID=${NB_UID}
-ENV HOME=/home/${NB_USER}
+# Create virtual environment and install core Python tools
+RUN python3 -m venv $VIRTUAL_ENV && \
+    pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir ipykernel jupyterlab
 
-
-# Install Python packages
-RUN pip install --upgrade pip && \
-    pip install \
+# Install Scientific Python Stack
+RUN pip install --no-cache-dir \
     numpy \
     scipy \
     matplotlib \
     pandas \
-    jupyterlab
+    lxml \
+    h5py
 
-# Install OpenMC from source
+# Install OpenMC from source (v0.15.3)
 RUN git clone --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git && \
     cd openmc && \
     git fetch --tags && \
     git checkout v0.15.3 && \
-    mkdir build && \
-    cd build && \
+    mkdir build && cd build && \
     cmake .. && \
-    make && \
+    make -j$(nproc) && \
     make install && \
-    cd /openmc/ && \
+    cd .. && \
     pip install .
 
-RUN pip install \
+# Install OpenMC community tools
+RUN pip install --no-cache-dir \
     openmc_data_downloader \
     openmc_depletion_plotter \
     openmc_data
 
-RUN mkdir -p ${HOME}/data
+# Register the Kernel for Jupyter/Codespaces
+RUN python3 -m ipykernel install --name "openmc" --display-name "Python (OpenMC)"
 
-# Download nuclear data
-# ENDFB-8.0
-# RUN cd ${HOME}/data && \
-#     wget -O nndc-b8.0.tar.xz https://anl.box.com/shared/static/uhbxlrx7hvxqw27psymfbhi7bx7s6u6a.xz && \
-#     mkdir nndc-b8.0-hdf5 && \
-#     tar -xf nndc-b8.0.tar.xz -C nndc-b8.0-hdf5
-
-# ENV OPENMC_CROSS_SECTIONS=${HOME}/data/nndc-b8.0-hdf5/endfb-viii.0-hdf5/cross_sections.xml
-
-# Copy workshop files
-COPY Datalabs/ ${HOME}/Datalabs/
-COPY Extra/ ${HOME}/Extra/
-COPY data/ ${HOME}/data/ 
-
+# Prepare workspace and copy files
 WORKDIR ${HOME}
+COPY --chown=${NB_UID}:${NB_UID} Datalabs/ ${HOME}/Datalabs/
+COPY --chown=${NB_UID}:${NB_UID} Extra/ ${HOME}/Extra/
+COPY --chown=${NB_UID}:${NB_UID} data/ ${HOME}/data/
 
+# Ensure the user owns the virtual environment and home dir
+RUN chown -R ${NB_UID}:${NB_UID} /opt/venv ${HOME}
+
+USER ${NB_USER}
 ENV PORT=8888
+EXPOSE 8888
 
-CMD ["jupyter", "lab", "--notebook-dir=/home/ulb/", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+# Default command if run locally; Codespaces will override this
+CMD ["jupyter", "lab", "--notebook-dir=/home/vscode/", "--port=8888", "--no-browser", "--ip=0.0.0.0"]
