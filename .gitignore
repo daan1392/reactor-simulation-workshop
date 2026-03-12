@@ -3,6 +3,8 @@
 tallies.out
 *.h5
 
+venv/
+
 # DAGMC files
 *.h5m
 
